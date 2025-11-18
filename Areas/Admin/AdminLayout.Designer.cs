@@ -42,10 +42,9 @@
             // 
             MainContentPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MainContentPanel.BackColor = Color.FromArgb(224, 224, 224);
-            MainContentPanel.Location = new Point(221, 22);
-            MainContentPanel.Margin = new Padding(4, 5, 4, 5);
+            MainContentPanel.Location = new Point(155, 13);
             MainContentPanel.Name = "MainContentPanel";
-            MainContentPanel.Size = new Size(1321, 855);
+            MainContentPanel.Size = new Size(925, 513);
             MainContentPanel.TabIndex = 0;
             // 
             // panel2
@@ -58,20 +57,18 @@
             panel2.Controls.Add(PrescriptionBtn);
             panel2.Controls.Add(DashboardBtn);
             panel2.ForeColor = Color.White;
-            panel2.Location = new Point(11, 22);
-            panel2.Margin = new Padding(4, 5, 4, 5);
+            panel2.Location = new Point(8, 13);
             panel2.Name = "panel2";
-            panel2.Size = new Size(201, 855);
+            panel2.Size = new Size(141, 513);
             panel2.TabIndex = 1;
             // 
             // AppointmentBtn
             // 
             AppointmentBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AppointmentBtn.ForeColor = Color.Teal;
-            AppointmentBtn.Location = new Point(6, 354);
-            AppointmentBtn.Margin = new Padding(4, 5, 4, 5);
+            AppointmentBtn.Location = new Point(4, 212);
             AppointmentBtn.Name = "AppointmentBtn";
-            AppointmentBtn.Size = new Size(191, 52);
+            AppointmentBtn.Size = new Size(134, 31);
             AppointmentBtn.TabIndex = 7;
             AppointmentBtn.Text = "Appointment";
             AppointmentBtn.UseVisualStyleBackColor = true;
@@ -82,10 +79,9 @@
             LogoutBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LogoutBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LogoutBtn.ForeColor = Color.Teal;
-            LogoutBtn.Location = new Point(6, 798);
-            LogoutBtn.Margin = new Padding(4, 5, 4, 5);
+            LogoutBtn.Location = new Point(4, 479);
             LogoutBtn.Name = "LogoutBtn";
-            LogoutBtn.Size = new Size(191, 52);
+            LogoutBtn.Size = new Size(134, 31);
             LogoutBtn.TabIndex = 6;
             LogoutBtn.Text = "Log out";
             LogoutBtn.UseVisualStyleBackColor = true;
@@ -94,10 +90,9 @@
             // 
             BillingBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BillingBtn.ForeColor = Color.Teal;
-            BillingBtn.Location = new Point(6, 292);
-            BillingBtn.Margin = new Padding(4, 5, 4, 5);
+            BillingBtn.Location = new Point(4, 175);
             BillingBtn.Name = "BillingBtn";
-            BillingBtn.Size = new Size(191, 52);
+            BillingBtn.Size = new Size(134, 31);
             BillingBtn.TabIndex = 5;
             BillingBtn.Text = "Billing";
             BillingBtn.UseVisualStyleBackColor = true;
@@ -107,10 +102,9 @@
             // 
             PrescriptionBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PrescriptionBtn.ForeColor = Color.Teal;
-            PrescriptionBtn.Location = new Point(6, 230);
-            PrescriptionBtn.Margin = new Padding(4, 5, 4, 5);
+            PrescriptionBtn.Location = new Point(4, 138);
             PrescriptionBtn.Name = "PrescriptionBtn";
-            PrescriptionBtn.Size = new Size(191, 52);
+            PrescriptionBtn.Size = new Size(134, 31);
             PrescriptionBtn.TabIndex = 4;
             PrescriptionBtn.Text = "Prescription";
             PrescriptionBtn.UseVisualStyleBackColor = true;
@@ -120,24 +114,23 @@
             // 
             DashboardBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardBtn.ForeColor = Color.Teal;
-            DashboardBtn.Location = new Point(6, 168);
-            DashboardBtn.Margin = new Padding(4, 5, 4, 5);
+            DashboardBtn.Location = new Point(4, 101);
             DashboardBtn.Name = "DashboardBtn";
-            DashboardBtn.Size = new Size(191, 52);
+            DashboardBtn.Size = new Size(134, 31);
             DashboardBtn.TabIndex = 0;
             DashboardBtn.Text = "Dashboard";
             DashboardBtn.UseVisualStyleBackColor = true;
+            DashboardBtn.Click += DashboardBtn_Click;
             // 
             // AdminLayout
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Teal;
-            ClientSize = new Size(1560, 897);
+            ClientSize = new Size(1092, 538);
             Controls.Add(panel2);
             Controls.Add(MainContentPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4, 5, 4, 5);
             Name = "AdminLayout";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;

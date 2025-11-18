@@ -16,6 +16,8 @@ namespace Dental.Areas.Admin
         public AdminLayout()
         {
             InitializeComponent();
+            Services.AppService.ShowPanel(MainContentPanel, new Dashboard());
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,6 +40,12 @@ namespace Dental.Areas.Admin
         private void AppointmentBtn_Click(object sender, EventArgs e)
         {
             Services.AppService.ShowPanel(MainContentPanel, new AppointmentUC());
+
+        }
+
+        private void DashboardBtn_Click(object sender, EventArgs e)
+        {
+            Services.AppService.ShowPanel(MainContentPanel, new Dashboard());
 
         }
     }
