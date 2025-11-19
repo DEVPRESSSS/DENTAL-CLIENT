@@ -20,5 +20,34 @@ namespace Dental.Services
                 e.SuppressKeyPress = true;   
             }
         }
+
+        public static bool ValidateEmail(string email)
+        {
+            if (!email.ToLower().EndsWith("@gmail.com"))
+            {
+                Services.AppService.MessageBoxState("Error", "Email input is invalid");
+                return true;
+            }
+
+            return false;
+
+
+        }
+
+        public static bool RequireFields(List<string> inputs)
+        {
+            foreach (var box in inputs)
+            {
+                if (string.IsNullOrEmpty(box))
+                {
+                    
+                    return true ;
+                  
+
+                }
+            }
+
+            return false;
+        }
     }
 }

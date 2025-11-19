@@ -1,12 +1,17 @@
+using Dental.Authentication;
+
 namespace Dental
 {
     public partial class Login : Form
     {
         private string? _email;
         private string? _password;
+
+        public static Login _instance;
         public Login()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         //Close the form
@@ -48,7 +53,7 @@ namespace Dental
             _email = EmailTxt.Text.Trim();
             _password = PasswordTxt.Text.Trim();
 
-            if(string.IsNullOrEmpty(_email) || string.IsNullOrEmpty(_password))
+            if (string.IsNullOrEmpty(_email) || string.IsNullOrEmpty(_password))
             {
                 Services.AppService.MessageBoxState("Error", "All fields are required");
                 Services.AppService.ClearFields(new List<TextBox> { EmailTxt, PasswordTxt });
@@ -58,7 +63,11 @@ namespace Dental
 
         }
 
+        private void ForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
 
-    
+            Services.FormService.ShowFormAndHide(new ForgotPassword());
+        }
     }
 }

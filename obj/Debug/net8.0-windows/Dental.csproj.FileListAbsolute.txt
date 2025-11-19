@@ -69,3 +69,5 @@ C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Areas.Usercon
 C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Areas.Usercontrols.AppointmentUC.resources
 C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Areas.Usercontrols.PrescriptionUC.resources
 C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.sourcelink.json
+C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Authentication.ForgotPassword.resources
+C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Properties.Resources.resources

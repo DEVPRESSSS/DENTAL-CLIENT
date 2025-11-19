@@ -19,16 +19,16 @@ namespace Dental.Services
         }
 
         //MessageBoxes service
-        public static void MessageBoxState(string title, string message)
+        public static void MessageBoxState(string caption, string message)
         {
 
-            switch(title.ToLower())
+            switch(caption.ToLower())
             {
                 case "information":
-                    MessageBox.Show(title, message,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show(message, caption, MessageBoxButtons.OK,MessageBoxIcon.Information);
                     break;
                 case "error":
-                    MessageBox.Show(title, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 default:
                     break;

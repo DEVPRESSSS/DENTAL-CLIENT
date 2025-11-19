@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
+            ForgotPassword = new LinkLabel();
             MaximizeBtn = new Button();
             MinimizeBtn = new Button();
             LoginBtn = new Button();
@@ -58,6 +59,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(ForgotPassword);
             panel2.Controls.Add(MaximizeBtn);
             panel2.Controls.Add(MinimizeBtn);
             panel2.Controls.Add(LoginBtn);
@@ -71,6 +73,20 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(431, 426);
             panel2.TabIndex = 0;
+            // 
+            // ForgotPassword
+            // 
+            ForgotPassword.Anchor = AnchorStyles.None;
+            ForgotPassword.AutoSize = true;
+            ForgotPassword.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            ForgotPassword.LinkColor = Color.Teal;
+            ForgotPassword.Location = new Point(213, 317);
+            ForgotPassword.Name = "ForgotPassword";
+            ForgotPassword.Size = new Size(96, 15);
+            ForgotPassword.TabIndex = 9;
+            ForgotPassword.TabStop = true;
+            ForgotPassword.Text = "forgot password?";
+            ForgotPassword.LinkClicked += ForgotPassword_LinkClicked;
             // 
             // MaximizeBtn
             // 
@@ -110,7 +126,7 @@
             LoginBtn.BackColor = Color.Teal;
             LoginBtn.FlatStyle = FlatStyle.Flat;
             LoginBtn.ForeColor = Color.White;
-            LoginBtn.Location = new Point(122, 328);
+            LoginBtn.Location = new Point(122, 345);
             LoginBtn.Name = "LoginBtn";
             LoginBtn.Size = new Size(189, 33);
             LoginBtn.TabIndex = 6;
@@ -216,5 +232,6 @@
         private Label label1;
         private Button MinimizeBtn;
         private Button MaximizeBtn;
+        private LinkLabel ForgotPassword;
     }
 }

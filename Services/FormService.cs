@@ -44,5 +44,15 @@ namespace Dental.Services
             }
 
         }
+
+        public static void ShowFormAndHide(Form next)
+        {
+            if (next == null) return;
+
+            next.Show();
+        }
+
+        
+
     }
 }
