@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             label6 = new Label();
             appointmentDate = new DateTimePicker();
@@ -46,10 +47,10 @@
             DeleteBtn = new Button();
             UpdateBtn = new Button();
             AddBtn = new Button();
-            dataGridView1 = new DataGridView();
+            AppointmentTbl = new DataGridView();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AppointmentTbl).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -115,7 +116,6 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(220, 23);
             dateTimePicker1.TabIndex = 8;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // label4
             // 
@@ -155,19 +155,22 @@
             FullnameTxt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FullnameTxt.Location = new Point(236, 35);
             FullnameTxt.Margin = new Padding(2);
+            FullnameTxt.MaxLength = 30;
             FullnameTxt.Name = "FullnameTxt";
             FullnameTxt.Size = new Size(220, 23);
             FullnameTxt.TabIndex = 4;
+            FullnameTxt.KeyDown += FullnameTxt_KeyDown;
+            FullnameTxt.KeyPress += FullnameTxt_KeyPress;
             // 
             // AddressTxt
             // 
             AddressTxt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             AddressTxt.Location = new Point(465, 35);
             AddressTxt.Margin = new Padding(2);
+            AddressTxt.MaxLength = 45;
             AddressTxt.Name = "AddressTxt";
             AddressTxt.Size = new Size(220, 23);
             AddressTxt.TabIndex = 3;
-            AddressTxt.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -196,9 +199,11 @@
             PhoneTxt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             PhoneTxt.Location = new Point(696, 35);
             PhoneTxt.Margin = new Padding(2);
+            PhoneTxt.MaxLength = 11;
             PhoneTxt.Name = "PhoneTxt";
             PhoneTxt.Size = new Size(220, 23);
             PhoneTxt.TabIndex = 0;
+            PhoneTxt.KeyPress += PhoneTxt_KeyPress;
             // 
             // panel1
             // 
@@ -208,7 +213,7 @@
             panel1.Controls.Add(DeleteBtn);
             panel1.Controls.Add(UpdateBtn);
             panel1.Controls.Add(AddBtn);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(AppointmentTbl);
             panel1.Location = new Point(13, 130);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
@@ -224,13 +229,14 @@
             ClearBtn.FlatStyle = FlatStyle.Flat;
             ClearBtn.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ClearBtn.ForeColor = Color.White;
-            ClearBtn.Location = new Point(584, 328);
+            ClearBtn.Location = new Point(584, 326);
             ClearBtn.Margin = new Padding(2);
             ClearBtn.Name = "ClearBtn";
             ClearBtn.Size = new Size(78, 23);
             ClearBtn.TabIndex = 4;
             ClearBtn.Text = "Clear";
             ClearBtn.UseVisualStyleBackColor = false;
+            ClearBtn.Click += ClearBtn_Click;
             // 
             // DeleteBtn
             // 
@@ -241,13 +247,14 @@
             DeleteBtn.FlatStyle = FlatStyle.Flat;
             DeleteBtn.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DeleteBtn.ForeColor = Color.White;
-            DeleteBtn.Location = new Point(666, 328);
+            DeleteBtn.Location = new Point(666, 326);
             DeleteBtn.Margin = new Padding(2);
             DeleteBtn.Name = "DeleteBtn";
             DeleteBtn.Size = new Size(78, 23);
             DeleteBtn.TabIndex = 3;
             DeleteBtn.Text = "Delete";
             DeleteBtn.UseVisualStyleBackColor = false;
+            DeleteBtn.Click += DeleteBtn_Click;
             // 
             // UpdateBtn
             // 
@@ -258,7 +265,7 @@
             UpdateBtn.FlatStyle = FlatStyle.Flat;
             UpdateBtn.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             UpdateBtn.ForeColor = Color.White;
-            UpdateBtn.Location = new Point(749, 328);
+            UpdateBtn.Location = new Point(749, 326);
             UpdateBtn.Margin = new Padding(2);
             UpdateBtn.Name = "UpdateBtn";
             UpdateBtn.Size = new Size(78, 23);
@@ -276,7 +283,7 @@
             AddBtn.FlatStyle = FlatStyle.Flat;
             AddBtn.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddBtn.ForeColor = Color.White;
-            AddBtn.Location = new Point(832, 328);
+            AddBtn.Location = new Point(832, 326);
             AddBtn.Margin = new Padding(2);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(78, 23);
@@ -285,18 +292,37 @@
             AddBtn.UseVisualStyleBackColor = false;
             AddBtn.Click += AddBtn_Click;
             // 
-            // dataGridView1
+            // AppointmentTbl
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 11);
-            dataGridView1.Margin = new Padding(2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(896, 306);
-            dataGridView1.TabIndex = 0;
+            AppointmentTbl.AllowUserToAddRows = false;
+            AppointmentTbl.AllowUserToDeleteRows = false;
+            AppointmentTbl.AllowUserToResizeColumns = false;
+            AppointmentTbl.AllowUserToResizeRows = false;
+            AppointmentTbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AppointmentTbl.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AppointmentTbl.BackgroundColor = Color.White;
+            AppointmentTbl.BorderStyle = BorderStyle.None;
+            AppointmentTbl.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            AppointmentTbl.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            AppointmentTbl.DefaultCellStyle = dataGridViewCellStyle1;
+            AppointmentTbl.GridColor = Color.Teal;
+            AppointmentTbl.Location = new Point(13, 14);
+            AppointmentTbl.Margin = new Padding(2);
+            AppointmentTbl.Name = "AppointmentTbl";
+            AppointmentTbl.ReadOnly = true;
+            AppointmentTbl.RowHeadersVisible = false;
+            AppointmentTbl.RowHeadersWidth = 62;
+            AppointmentTbl.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            AppointmentTbl.Size = new Size(897, 310);
+            AppointmentTbl.TabIndex = 0;
+            AppointmentTbl.CellClick += AppointmentTbl_CellClick;
             // 
             // AppointmentUC
             // 
@@ -311,7 +337,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AppointmentTbl).EndInit();
             ResumeLayout(false);
         }
 
@@ -319,7 +345,7 @@
 
         private GroupBox groupBox1;
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView AppointmentTbl;
         private Button AddBtn;
         private Button UpdateBtn;
         private Button DeleteBtn;
