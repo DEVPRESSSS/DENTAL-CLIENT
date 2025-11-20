@@ -30,6 +30,7 @@
         {
             MainContentPanel = new Panel();
             panel2 = new Panel();
+            StaffBtn = new Button();
             AppointmentBtn = new Button();
             LogoutBtn = new Button();
             BillingBtn = new Button();
@@ -51,6 +52,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel2.BackColor = Color.Teal;
+            panel2.Controls.Add(StaffBtn);
             panel2.Controls.Add(AppointmentBtn);
             panel2.Controls.Add(LogoutBtn);
             panel2.Controls.Add(BillingBtn);
@@ -61,6 +63,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(141, 513);
             panel2.TabIndex = 1;
+            // 
+            // StaffBtn
+            // 
+            StaffBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            StaffBtn.ForeColor = Color.Teal;
+            StaffBtn.Location = new Point(3, 249);
+            StaffBtn.Name = "StaffBtn";
+            StaffBtn.Size = new Size(134, 31);
+            StaffBtn.TabIndex = 8;
+            StaffBtn.Text = "Staff";
+            StaffBtn.UseVisualStyleBackColor = true;
+            StaffBtn.Click += StaffBtn_Click;
             // 
             // AppointmentBtn
             // 
@@ -85,6 +99,7 @@
             LogoutBtn.TabIndex = 6;
             LogoutBtn.Text = "Log out";
             LogoutBtn.UseVisualStyleBackColor = true;
+            LogoutBtn.Click += LogoutBtn_Click;
             // 
             // BillingBtn
             // 
@@ -148,5 +163,6 @@
         private Button PrescriptionBtn;
         private Button LogoutBtn;
         private Button AppointmentBtn;
+        private Button StaffBtn;
     }
 }

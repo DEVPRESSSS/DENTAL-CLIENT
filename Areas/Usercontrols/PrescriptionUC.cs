@@ -58,7 +58,17 @@ namespace Dental.Areas.Usercontrols
 
                 return;
             }
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this appointment?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
             try
             {
                 SqlCommand cmd = new SqlCommand("DELETE FROM prescription WHERE prescription_id=@id", _sqlconnection);

@@ -48,5 +48,28 @@ namespace Dental.Areas.Admin
             Services.AppService.ShowPanel(MainContentPanel, new Dashboard());
 
         }
+
+        private void StaffBtn_Click(object sender, EventArgs e)
+        {
+            Services.AppService.ShowPanel(MainContentPanel, new Staff());
+
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                var login = new Login();
+                login.Show();
+                this.Close();
+            }
+        }
     }
 }

@@ -50,8 +50,14 @@ namespace Dental.Areas.Usercontrols
                 if (checkIfEmpty == true)
                 {
                     Services.AppService.MessageBoxState("Error", "All fields are required!");
-                    Clear();
+                    
                     return;
+                }
+                if(phone.Length < 11)
+                {
+                    Services.AppService.MessageBoxState("Error", "Phone must be 11 digits");
+                    return;
+
                 }
 
 
@@ -67,7 +73,7 @@ namespace Dental.Areas.Usercontrols
                 cmd.ExecuteNonQuery();
 
                 Services.AppService.MessageBoxState("Information", "Appointment added successfully");
-                Clear();
+                LoadAppointments();
             }
             catch (SqlException ex)
             {
@@ -76,6 +82,8 @@ namespace Dental.Areas.Usercontrols
             finally
             {
                 _sqlconnection.Close();
+
+                Clear();
             }
 
         }
@@ -123,16 +131,22 @@ namespace Dental.Areas.Usercontrols
                 Services.AppService.MessageBoxState("Error", "All fields are required!");
                 return;
             }
-            if (int.TryParse(phone, out int _phone))
+            if (phone.Length < 11)
             {
-
-                if (_phone <= 11)
-                {
-                    Services.AppService.MessageBoxState("Error", "Phone must be 11 digits");
-                    return;
-                }
+                Services.AppService.MessageBoxState("Error", "Phone must be 11 digits");
+                return;
 
             }
+            //if (int.TryParse(phone, out int _phone))
+            //{
+
+            //    if (_phone <= 11)
+            //    {
+            //        Services.AppService.MessageBoxState("Error", "Phone must be 11 digits");
+            //        return;
+            //    }
+
+            //}
 
             SqlCommand cmd = new SqlCommand("UPDATE appointment SET name=@name, phone=@phone, address=@address, dob=@dob, gender=@gender, appointmentdate=@appointmentdate WHERE appointment_id=@id", _sqlconnection);
             cmd.Parameters.AddWithValue("@id", selectedId);
@@ -176,7 +190,17 @@ namespace Dental.Areas.Usercontrols
                 MessageBox.Show("Please select a record to delete.");
                 return;
             }
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this appointment?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
             _sqlconnection.Open();
 
             try
@@ -190,16 +214,17 @@ namespace Dental.Areas.Usercontrols
 
                 Services.AppService.MessageBoxState("Information", "Appointment deleted successfully");
                 LoadAppointments();
-                Clear();
+             
 
             }
             catch
             {
-                Services.AppService.MessageBoxState("Error", "Error while deleting..");
+                Services.AppService.MessageBoxState("Error", "This patient has related records");
             }
             finally
             {
                 _sqlconnection.Close();
+                Clear();
             }
         }
 

@@ -16,6 +16,9 @@
     <Compile Update="Areas\Usercontrols\PrescriptionUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Areas\Usercontrols\Staff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Authentication\ForgotPassword.cs">
       <SubType>Form</SubType>
     </Compile>

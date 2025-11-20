@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+    <PackageReference Include="PDFsharp" Version="1.50.5147" />
   </ItemGroup>
 
   <ItemGroup>
