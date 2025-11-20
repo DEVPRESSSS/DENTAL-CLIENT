@@ -12,8 +12,8 @@ namespace Dental
         {
          
             ApplicationConfiguration.Initialize();
-            //Application.Run(new Login());
-            Application.Run(new AdminLayout());
+            Application.Run(new Login());
+            //Application.Run(new AdminLayout());
         }
     }
 }

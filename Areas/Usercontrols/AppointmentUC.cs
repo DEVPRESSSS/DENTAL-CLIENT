@@ -1,4 +1,5 @@
 ﻿using Dental.DatabaseConnection;
+using Dental.Services;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,18 @@ namespace Dental.Areas.Usercontrols
             _sqlconnection = new SqlConnection(_connection.connectionString);
             gendercb.SelectedIndex = 0;
             LoadAppointments();
+            LimitAccess();
         }
 
+        private void LimitAccess()
+        {
+
+            if (UserService.Role == "Staff")
+            {
+                DeleteBtn.Visible = false;
+
+            }
+        }
         private void AddBtn_Click(object sender, EventArgs e)
         {
             AddAppointment();
@@ -103,6 +114,8 @@ namespace Dental.Areas.Usercontrols
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM appointment", _sqlconnection);
             DataTable dt = new DataTable();
             da.Fill(dt);
+            AppointmentTbl.AllowUserToResizeColumns = false;
+
             AppointmentTbl.DataSource = dt;
         }
 

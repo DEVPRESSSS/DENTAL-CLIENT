@@ -72,68 +72,6 @@ namespace Dental.Areas.Usercontrols
         }
         private void GenerateReceipt_Click(object sender, EventArgs e)
         {
-            //if (PatientCb.SelectedValue == null)
-            //{
-            //    MessageBox.Show("Please select a patient.");
-            //    return;
-            //}
-            //var costLines = Cost.Text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            //int appointmentId = (int)PatientCb.SelectedValue;
-            //string costTextRaw = costLines[0].Replace("₱", "").Replace(",", "").Trim();
-
-            //if (!decimal.TryParse(costTextRaw, out decimal treatmentCost))
-            //{
-            //    MessageBox.Show("Please enter a valid cost.");
-            //    return;
-            //}
-
-            //try
-            //{
-            //    _sqlconnection.Open();
-
-            //    string checkQuery = "SELECT service_id FROM services WHERE service_name = @desc";
-            //    SqlCommand cmdCheck = new SqlCommand(checkQuery, _sqlconnection);
-            //    cmdCheck.Parameters.AddWithValue("@desc", treatmentDesc);
-
-            //    object existingServiceIdObj = cmdCheck.ExecuteScalar();
-            //    int serviceId;
-
-            //    if (existingServiceIdObj != null)
-            //    {
-            //        serviceId = (int)existingServiceIdObj;
-            //    }
-            //    else
-            //    {
-            //        string insertServiceQuery = "INSERT INTO services (service_name, cost) OUTPUT INSERTED.service_id VALUES (@desc, @cost)";
-            //        SqlCommand cmdInsertService = new SqlCommand(insertServiceQuery, _sqlconnection);
-            //        cmdInsertService.Parameters.AddWithValue("@service_name", treatmentDesc);
-            //        cmdInsertService.Parameters.AddWithValue("@cost", treatmentCost);
-
-            //        serviceId = (int)cmdInsertService.ExecuteScalar();
-            //    }
-
-            //    // Insert prescription with serviceId as treatment_id
-            //    string insertPrescriptionQuery = "INSERT INTO prescription (appointment_id, treatment_id, allergies) VALUES (@appointmentId, @serviceId, @allergies)";
-            //    SqlCommand cmdInsertPrescription = new SqlCommand(insertPrescriptionQuery, _sqlconnection);
-            //    cmdInsertPrescription.Parameters.AddWithValue("@appointmentId", appointmentId);
-            //    cmdInsertPrescription.Parameters.AddWithValue("@serviceId", serviceId);
-            //    cmdInsertPrescription.Parameters.AddWithValue("@allergies", AllergiesTxt.Text);
-
-            //    cmdInsertPrescription.ExecuteNonQuery();
-
-            //    _sqlconnection.Close();
-
-            //    LoadPatientTreatmentsToGrid(appointmentId);
-
-            //    Cost.Text = RemoveFirstLine(Cost.Text);
-
-            //    MessageBox.Show("Treatment added successfully");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error" + ex.Message);
-            //    _sqlconnection.Close();
-            //}
             if (PatientCb.SelectedValue == null)
             {
                 MessageBox.Show("Please select a patient.");
@@ -160,11 +98,34 @@ namespace Dental.Areas.Usercontrols
                 int margin = 40;
                 int yPoint = margin;
 
-                // Title
+                // ------------------- Add Logo -------------------
+                string logoPath = Path.Combine(System.Windows.Forms.Application.StartupPath, @"..\..\..\Resources\Assets\Logo.png");
+
+                // Normalize path
+                logoPath = Path.GetFullPath(logoPath);
+                if (System.IO.File.Exists(logoPath))
+                {
+                    XImage logo = XImage.FromFile(logoPath);
+                    double logoWidth = 100; // width in points
+                    double logoHeight = (logo.PixelHeight / (double)logo.PixelWidth) * logoWidth;
+                    double xLogo = (page.Width.Point - logoWidth) / 2; // center
+                    gfx.DrawImage(logo, xLogo, yPoint, logoWidth, logoHeight);
+                    yPoint += (int)logoHeight + 10;
+                }
+
+                // ------------------- Address & Contact -------------------
+                string address = "Jaicten Dental Clinic\n#725 Quezon Blvd., Zone 030, Brgy. 308, Quiapo, Manila";
+                string contact = "Contact: (02) 1234-5678";
+                gfx.DrawString(address, regularFont, XBrushes.Black, new XRect(0, yPoint, page.Width, 30), XStringFormats.TopCenter);
+                yPoint += 30;
+                gfx.DrawString(contact, regularFont, XBrushes.Black, new XRect(0, yPoint, page.Width, 30), XStringFormats.TopCenter);
+                yPoint += 40; // spacing before title
+
+                // ------------------- Title -------------------
                 gfx.DrawString("Patient Treatment Report", titleFont, XBrushes.Black, new XRect(0, yPoint, page.Width, 30), XStringFormats.TopCenter);
                 yPoint += 40;
 
-                // Patient Info
+                // ------------------- Patient Info -------------------
                 gfx.DrawString($"Patient Name: {PatientCb.Text}", regularFont, XBrushes.Black, margin, yPoint);
                 yPoint += 20;
                 gfx.DrawString($"Phone: {PhoneTxt.Text}", regularFont, XBrushes.Black, margin, yPoint);
@@ -174,14 +135,14 @@ namespace Dental.Areas.Usercontrols
                 gfx.DrawString($"Allergies: {AllergiesTxt.Text}", regularFont, XBrushes.Black, margin, yPoint);
                 yPoint += 30;
 
-                // Table Headers
+                // ------------------- Table Headers -------------------
                 gfx.DrawString("Treatment", headerFont, XBrushes.Black, margin, yPoint);
                 gfx.DrawString("Cost", headerFont, XBrushes.Black, margin + 350, yPoint);
                 yPoint += 20;
 
                 decimal totalCost = 0m;
 
-                // Table rows
+                // ------------------- Table Rows -------------------
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (row.IsNewRow) continue;
@@ -196,7 +157,7 @@ namespace Dental.Areas.Usercontrols
                     gfx.DrawString("₱" + cost.ToString("N2"), regularFont, XBrushes.Black, margin + 350, yPoint);
                     yPoint += 20;
 
-                    // Check if close to bottom of page, add new page
+                    // Add new page if reached bottom
                     if (yPoint > page.Height - margin)
                     {
                         page = document.AddPage();
@@ -210,13 +171,13 @@ namespace Dental.Areas.Usercontrols
                 yPoint += 20;
                 gfx.DrawString($"Total Cost: ₱{totalCost.ToString("N2")}", headerFont, XBrushes.Black, margin, yPoint);
 
-                // Save PDF
+                // ------------------- Save PDF -------------------
                 using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF Files|*.pdf", FileName = "TreatmentReport.pdf" })
                 {
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
                         document.Save(sfd.FileName);
-                        Process.Start(new ProcessStartInfo(sfd.FileName) { UseShellExecute = true });
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(sfd.FileName) { UseShellExecute = true });
                         MessageBox.Show("PDF report generated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -226,6 +187,7 @@ namespace Dental.Areas.Usercontrols
                 MessageBox.Show("Error generating PDF: " + ex.Message);
             }
         }
+
         private void LoadPatientDetails(int patientId)
         {
             try

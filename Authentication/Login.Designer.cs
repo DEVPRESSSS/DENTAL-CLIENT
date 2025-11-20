@@ -30,6 +30,7 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
+            ShowPassword = new CheckBox();
             ForgotPassword = new LinkLabel();
             MaximizeBtn = new Button();
             MinimizeBtn = new Button();
@@ -59,6 +60,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(ShowPassword);
             panel2.Controls.Add(ForgotPassword);
             panel2.Controls.Add(MaximizeBtn);
             panel2.Controls.Add(MinimizeBtn);
@@ -73,6 +75,19 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(431, 426);
             panel2.TabIndex = 0;
+            panel2.Paint += panel2_Paint;
+            // 
+            // ShowPassword
+            // 
+            ShowPassword.Anchor = AnchorStyles.None;
+            ShowPassword.AutoSize = true;
+            ShowPassword.Location = new Point(203, 295);
+            ShowPassword.Name = "ShowPassword";
+            ShowPassword.Size = new Size(108, 19);
+            ShowPassword.TabIndex = 10;
+            ShowPassword.Text = "Show password";
+            ShowPassword.UseVisualStyleBackColor = true;
+            ShowPassword.CheckedChanged += ShowPassword_CheckedChanged;
             // 
             // ForgotPassword
             // 
@@ -96,11 +111,11 @@
             MaximizeBtn.FlatStyle = FlatStyle.Flat;
             MaximizeBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             MaximizeBtn.ForeColor = Color.Teal;
+            MaximizeBtn.Image = Properties.Resources.maximize;
             MaximizeBtn.Location = new Point(333, 3);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(44, 30);
             MaximizeBtn.TabIndex = 8;
-            MaximizeBtn.Text = "+";
             MaximizeBtn.UseVisualStyleBackColor = true;
             MaximizeBtn.Click += MaximizeBtn_Click;
             // 
@@ -112,6 +127,7 @@
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
             MinimizeBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             MinimizeBtn.ForeColor = Color.Teal;
+            MinimizeBtn.Image = Properties.Resources.minimize_sign;
             MinimizeBtn.Location = new Point(283, 3);
             MinimizeBtn.Name = "MinimizeBtn";
             MinimizeBtn.Size = new Size(44, 30);
@@ -124,6 +140,7 @@
             // 
             LoginBtn.Anchor = AnchorStyles.None;
             LoginBtn.BackColor = Color.Teal;
+            LoginBtn.Cursor = Cursors.Hand;
             LoginBtn.FlatStyle = FlatStyle.Flat;
             LoginBtn.ForeColor = Color.White;
             LoginBtn.Location = new Point(122, 345);
@@ -137,20 +154,20 @@
             // PasswordTxt
             // 
             PasswordTxt.Anchor = AnchorStyles.None;
-            PasswordTxt.Location = new Point(122, 280);
+            PasswordTxt.Location = new Point(122, 263);
             PasswordTxt.MaxLength = 15;
             PasswordTxt.Name = "PasswordTxt";
-            PasswordTxt.PasswordChar = '*';
             PasswordTxt.PlaceholderText = "Enter your password";
             PasswordTxt.Size = new Size(189, 23);
             PasswordTxt.TabIndex = 5;
+            PasswordTxt.UseSystemPasswordChar = true;
             PasswordTxt.KeyDown += PasswordTxt_KeyDown;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(122, 262);
+            label2.Location = new Point(122, 245);
             label2.Name = "label2";
             label2.Size = new Size(60, 15);
             label2.TabIndex = 4;
@@ -159,7 +176,7 @@
             // EmailTxt
             // 
             EmailTxt.Anchor = AnchorStyles.None;
-            EmailTxt.Location = new Point(122, 225);
+            EmailTxt.Location = new Point(122, 208);
             EmailTxt.MaxLength = 40;
             EmailTxt.Name = "EmailTxt";
             EmailTxt.PlaceholderText = "Enter your email";
@@ -171,7 +188,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(122, 205);
+            label1.Location = new Point(122, 188);
             label1.Name = "label1";
             label1.Size = new Size(39, 15);
             label1.TabIndex = 2;
@@ -180,9 +197,11 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
+            pictureBox1.Image = Properties.Resources.Logo;
             pictureBox1.Location = new Point(155, 58);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(114, 97);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -194,11 +213,11 @@
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CloseBtn.ForeColor = Color.Teal;
+            CloseBtn.Image = Properties.Resources.close;
             CloseBtn.Location = new Point(384, 3);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(44, 30);
             CloseBtn.TabIndex = 0;
-            CloseBtn.Text = "X";
             CloseBtn.UseVisualStyleBackColor = true;
             CloseBtn.Click += CloseBtn_Click;
             // 
@@ -233,5 +252,6 @@
         private Button MinimizeBtn;
         private Button MaximizeBtn;
         private LinkLabel ForgotPassword;
+        private CheckBox ShowPassword;
     }
 }

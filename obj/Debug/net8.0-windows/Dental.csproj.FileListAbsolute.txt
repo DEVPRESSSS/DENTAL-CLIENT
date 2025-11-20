@@ -76,3 +76,6 @@ C:\Users\xmont\source\repos\Dental\bin\Debug\net8.0-windows\PdfSharp.dll
 C:\Users\xmont\source\repos\Dental\bin\Debug\net8.0-windows\de\PdfSharp.Charting.resources.dll
 C:\Users\xmont\source\repos\Dental\bin\Debug\net8.0-windows\de\PdfSharp.resources.dll
 C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Areas.Usercontrols.Staff.resources
+C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Areas.StaffDasboard.StaffLayout.resources
+C:\Users\xmont\source\repos\Dental\obj\Debug\net8.0-windows\Dental.Authentication.ChangePassword.resources
+C:\Users\xmont\source\repos\Dental\bin\Debug\net8.0-windows\Resources\Assets\Logo.png

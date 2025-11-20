@@ -29,10 +29,19 @@ namespace Dental.Areas.Usercontrols
             LoadPatients();
             LoadServices();
             LoadPrescriptions();
+            LimitAccess();
 
         }
 
+        private void LimitAccess()
+        {
 
+            if (UserService.Role == "Staff")
+            {
+                DeleteBtn.Visible = false;
+
+            }
+        }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {

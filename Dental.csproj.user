@@ -4,6 +4,9 @@
     <Compile Update="Areas\Admin\AdminLayout.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Areas\StaffDasboard\StaffLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Areas\Usercontrols\BillingUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     </Compile>
     <Compile Update="Areas\Usercontrols\Staff.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Authentication\ChangePassword.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Authentication\ForgotPassword.cs">
       <SubType>Form</SubType>

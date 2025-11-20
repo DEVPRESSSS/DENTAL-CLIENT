@@ -131,6 +131,7 @@
             // gendercb
             // 
             gendercb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            gendercb.DropDownStyle = ComboBoxStyle.DropDownList;
             gendercb.FormattingEnabled = true;
             gendercb.Items.AddRange(new object[] { "Male", "Female" });
             gendercb.Location = new Point(696, 79);

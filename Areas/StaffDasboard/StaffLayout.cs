@@ -1,4 +1,5 @@
 ﻿using Dental.Areas.Usercontrols;
+using Dental.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,31 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Dental.Areas.Admin
+namespace Dental.Areas.StaffDasboard
 {
-    public partial class AdminLayout : Form
+    public partial class StaffLayout : Form
     {
-        public AdminLayout()
+        public StaffLayout()
         {
             InitializeComponent();
-            Services.AppService.ShowPanel(MainContentPanel, new Dashboard());
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void PrescriptionBtn_Click(object sender, EventArgs e)
-        {
-            Services.AppService.ShowPanel(MainContentPanel, new PrescriptionUC());
-
-        }
-
-        private void BillingBtn_Click(object sender, EventArgs e)
-        {
-            Services.AppService.ShowPanel(MainContentPanel, new BillingUC());
 
         }
 
@@ -43,15 +31,15 @@ namespace Dental.Areas.Admin
 
         }
 
-        private void DashboardBtn_Click(object sender, EventArgs e)
+        private void BillingBtn_Click(object sender, EventArgs e)
         {
-            Services.AppService.ShowPanel(MainContentPanel, new Dashboard());
+            Services.AppService.ShowPanel(MainContentPanel, new BillingUC());
 
         }
 
-        private void StaffBtn_Click(object sender, EventArgs e)
+        private void PrescriptionBtn_Click(object sender, EventArgs e)
         {
-            Services.AppService.ShowPanel(MainContentPanel, new Staff());
+            Services.AppService.ShowPanel(MainContentPanel, new PrescriptionUC());
 
         }
 
@@ -67,6 +55,7 @@ namespace Dental.Areas.Admin
             if (confirm == DialogResult.Yes)
             {
                 Login._instance.Show();
+
                 this.Close();
             }
         }

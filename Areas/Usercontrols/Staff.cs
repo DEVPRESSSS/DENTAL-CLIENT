@@ -114,7 +114,7 @@ namespace Dental.Areas.Usercontrols
             FirstName = FirstnameTxt.Text;
             MiddleName = MiddleNameTxt.Text;
             Email = EmailTxt.Text;
-            Password = PasswordTxt.Text;
+            //Password = PasswordTxt.Text;
 
             var checkIfEmpty = Services.ValidationServices.RequireFields(new List<string> { FirstName, MiddleName, Email });
             if (checkIfEmpty == true)
@@ -127,12 +127,12 @@ namespace Dental.Areas.Usercontrols
 
 
 
-            SqlCommand cmd = new SqlCommand("UPDATE regis_tab SET firstname=@firstname, lastname=@lastname, email=@email, password=@password WHERE AppUserId=@AppUserId", _sqlconnection);
+            SqlCommand cmd = new SqlCommand("UPDATE regis_tab SET firstname=@firstname, lastname=@lastname, email=@email WHERE AppUserId=@AppUserId", _sqlconnection);
             cmd.Parameters.AddWithValue("@AppUserId", selectedId);
             cmd.Parameters.AddWithValue("@firstname", FirstName);
             cmd.Parameters.AddWithValue("@lastname", MiddleName);
             cmd.Parameters.AddWithValue("@email", Email);
-            cmd.Parameters.AddWithValue("@password", Password);
+           // cmd.Parameters.AddWithValue("@password", Password);
             _sqlconnection.Open();
             cmd.ExecuteNonQuery();
             _sqlconnection.Close();

@@ -73,6 +73,7 @@
             // VerifyEmail
             // 
             VerifyEmail.BackColor = Color.Teal;
+            VerifyEmail.Cursor = Cursors.Hand;
             VerifyEmail.FlatAppearance.BorderSize = 0;
             VerifyEmail.FlatStyle = FlatStyle.Flat;
             VerifyEmail.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -126,6 +127,7 @@
             // SubmitBtn
             // 
             SubmitBtn.BackColor = Color.Teal;
+            SubmitBtn.Cursor = Cursors.Hand;
             SubmitBtn.FlatAppearance.BorderSize = 0;
             SubmitBtn.FlatStyle = FlatStyle.Flat;
             SubmitBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
