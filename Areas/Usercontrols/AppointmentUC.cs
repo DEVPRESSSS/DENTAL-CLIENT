@@ -89,6 +89,7 @@ namespace Dental.Areas.Usercontrols
             Services.AppService.ClearFields(new List<TextBox> { FullnameTxt, PhoneTxt, AddressTxt });
         }
 
+        //Fetch the appointments
         private void LoadAppointments()
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM appointment", _sqlconnection);
@@ -97,6 +98,7 @@ namespace Dental.Areas.Usercontrols
             AppointmentTbl.DataSource = dt;
         }
 
+        //Call the update function
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             UpdateAppointment();
@@ -149,6 +151,7 @@ namespace Dental.Areas.Usercontrols
             Clear();
 
         }
+        //Row and data selection
         private void AppointmentTbl_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -165,6 +168,7 @@ namespace Dental.Areas.Usercontrols
             }
         }
 
+        //Delete specific appointment
         private void DeleteAppointment()
         {
             if (selectedId == -1)
