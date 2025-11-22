@@ -335,6 +335,7 @@
             Margin = new Padding(2);
             Name = "AppointmentUC";
             Size = new Size(945, 499);
+            Load += AppointmentUC_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);

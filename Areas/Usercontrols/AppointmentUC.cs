@@ -31,6 +31,10 @@ namespace Dental.Areas.Usercontrols
             gendercb.SelectedIndex = 0;
             LoadAppointments();
             LimitAccess();
+            appointmentDate.MinDate = DateTime.Today;
+            appointmentDate.Value = DateTime.Today;
+
+
         }
 
         private void LimitAccess()
@@ -61,10 +65,10 @@ namespace Dental.Areas.Usercontrols
                 if (checkIfEmpty == true)
                 {
                     Services.AppService.MessageBoxState("Error", "All fields are required!");
-                    
+
                     return;
                 }
-                if(phone.Length < 11)
+                if (phone.Length < 11)
                 {
                     Services.AppService.MessageBoxState("Error", "Phone must be 11 digits");
                     return;
@@ -227,7 +231,7 @@ namespace Dental.Areas.Usercontrols
 
                 Services.AppService.MessageBoxState("Information", "Appointment deleted successfully");
                 LoadAppointments();
-             
+
 
             }
             catch
@@ -265,6 +269,13 @@ namespace Dental.Areas.Usercontrols
         private void PhoneTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
             Services.ValidationServices.AllowOnlyNumbers(sender, e);
+        }
+
+        private void AppointmentUC_Load(object sender, EventArgs e)
+        {
+            dateTimePicker1.MinDate = new DateTime(1900, 1, 1);
+            dateTimePicker1.MaxDate = new DateTime(2018,1,1);
+
         }
     }
 }

@@ -1648,11 +1648,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xmont\\source\\repos\\Dental\\Dental.csproj",
+      "projectUniqueName": "D:\\CLIENT_PROJECTS\\Dental\\Dental.csproj",
       "projectName": "Dental",
-      "projectPath": "C:\\Users\\xmont\\source\\repos\\Dental\\Dental.csproj",
+      "projectPath": "D:\\CLIENT_PROJECTS\\Dental\\Dental.csproj",
       "packagesPath": "C:\\Users\\xmont\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xmont\\source\\repos\\Dental\\obj\\",
+      "outputPath": "D:\\CLIENT_PROJECTS\\Dental\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\xmont\\AppData\\Roaming\\NuGet\\NuGet.Config",

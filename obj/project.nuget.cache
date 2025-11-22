@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y+Z7Fe8DBxppJOuwxo/aHveUXL47SJ/NiySWJaumuUvNSiJuzQ8AeMIL9JZvjdpQbXyQtsNtfBNs0TmK8UU4fA==",
+  "dgSpecHash": "GFW30/0RGFx8egd5JU1r6qxZRhG0xNWvvxKHm0ilC6HfdgIfgQpBn7KU/1ripgZMMpyGyRVLte34CO6I7Depow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\xmont\\source\\repos\\Dental\\Dental.csproj",
+  "projectFilePath": "D:\\CLIENT_PROJECTS\\Dental\\Dental.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xmont\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\xmont\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
